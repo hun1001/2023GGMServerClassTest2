@@ -5,6 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+// 기존 GameRoom은 람다 캡처로 구현
+// 람다 캡처란 람다식 안에서 람다식 바깥의 변수를 참조하는 것
+// 람다 캡처의 단점 : 람다식이 참조하는 변수가 GC에 의해 수집되지 않도록 주의해야 함
+
 namespace Server.Game
 {
 	public class GameRoom
