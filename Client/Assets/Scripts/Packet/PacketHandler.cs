@@ -45,6 +45,7 @@ class PacketHandler
         if (go == null)
             return;
 
+        // 클라에서 이동을 이미 했는데 서버에서 또 이동명령 떨어져서 동기화 안되는 문제 해결하기 위한 예외처리
         if (Managers.Object.MyPlayer.Id == movePacket.ObjectId)
         {
             return;

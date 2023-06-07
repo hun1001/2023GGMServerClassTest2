@@ -20,6 +20,7 @@ namespace Server
 		static Listener _listener = new Listener();
 		static List<System.Timers.Timer> _timers = new List<System.Timers.Timer>();
 
+		// Update를 실행시켜주는 함수 System.Timers.Timer를 이용해 tick마다 실행
 		static void TickRoom(GameRoom room, int tick = 100)
 		{
 			var timer = new System.Timers.Timer();
@@ -28,6 +29,7 @@ namespace Server
 			timer.AutoReset = true;
 			timer.Enabled = true;
 
+			// 나중에 실행중인 타이머를 관리할 수 있게 저장시킴
 			_timers.Add(timer);
 		}
 

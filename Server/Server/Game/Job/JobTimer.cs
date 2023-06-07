@@ -16,6 +16,7 @@ namespace Server.Game
         }
     }
 
+    // JobTimerElem을 우선순위 큐에 넣어서 실행 시간이 빠른 순서대로 실행
     public class JobTimer
     {
         PriorityQueue<JobTimerElem> _pq = new PriorityQueue<JobTimerElem>();

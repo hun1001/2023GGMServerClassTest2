@@ -9,6 +9,8 @@ using System.Text;
 // 람다 캡처란 람다식 안에서 람다식 바깥의 변수를 참조하는 것
 // 람다 캡처의 단점 : 람다식이 참조하는 변수가 GC에 의해 수집되지 않도록 주의해야 함
 
+// 커맨드 패턴을 이용하여 Lock 사용을 최소화
+// Job과 JobSerializer를 만들었다. JobQueue와 비슷한 원리
 // Lock을 사용안하면 장점이 많지만 불안해지는 부분도 많음 Broadcast나 FindPlayer에서 문제 일어나기 좋음
 
 namespace Server.Game
