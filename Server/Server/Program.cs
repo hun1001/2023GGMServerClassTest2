@@ -37,7 +37,7 @@ namespace Server
 			DataManager.LoadData();
 
 			GameRoom gameRoom= RoomManager.Instance.Add(1);
-            TickRoom(gameRoom, 50);
+            TickRoom(gameRoom, 10);
 
 			// DNS (Domain Name System)
 			string host = Dns.GetHostName();
