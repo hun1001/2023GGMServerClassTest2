@@ -13,6 +13,9 @@ using System.Text;
 // Job과 JobSerializer를 만들었다. JobQueue와 비슷한 원리
 // Lock을 사용안하면 장점이 많지만 불안해지는 부분도 많음 Broadcast나 FindPlayer에서 문제 일어나기 좋음
 
+// JobSerializer를 활용하기 위해 기존 Lock들을 지우고 메서드 호출하는 부분을 Push를 통해 JobSerializer에 넘겨주어 실행
+// Lock을 덜 사용하기에 더 빠르지만 바로 실행 안될 수도 있다는 단점이 존재한다.
+
 namespace Server.Game
 {
     public class GameRoom : JobSerializer
