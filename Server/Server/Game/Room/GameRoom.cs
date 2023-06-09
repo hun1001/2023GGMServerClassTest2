@@ -58,7 +58,8 @@ namespace Server.Game
             if (gameObject == null)
                 return;
 
-            GameObjectType type = ObjectManager.GetObjectTypeById(gameObject.Id);
+            //GameObjectType type = ObjectManager.GetObjectTypeById(gameObject.Id);
+            GameObjectType type = gameObject.ObjectType;
 
             if (type == GameObjectType.Player)
             {
@@ -99,6 +100,12 @@ namespace Server.Game
                 Map.ApplyMove(monster, new Vector2Int(monster.CellPos.x, monster.CellPos.y));
             }
             else if (type == GameObjectType.Projectile)
+            {
+                Projectile projectile = gameObject as Projectile;
+                _projectiles.Add(gameObject.Id, projectile);
+                projectile.Room = this;
+            }
+            else if(type == GameObjectType.ExplosionProjectile)
             {
                 Projectile projectile = gameObject as Projectile;
                 _projectiles.Add(gameObject.Id, projectile);
@@ -151,6 +158,13 @@ namespace Server.Game
                 if (_projectiles.Remove(objectId, out projectile) == false)
                     return;
 
+                projectile.Room = null;
+            }
+            else if(type == GameObjectType.ExplosionProjectile) 
+            {
+                Projectile projectile = null;
+                if (_projectiles.Remove(objectId, out projectile) == false)
+                    return;
                 projectile.Room = null;
             }
 
@@ -243,6 +257,23 @@ namespace Server.Game
                         Push(EnterGame, arrow);
                     }
                     break;
+                case SkillType.SkillExplosion:
+                    {
+                        Arrow arrow = ObjectManager.Instance.Add<Arrow>();
+                        arrow.ChangeExplosion();
+                        if (arrow == null)
+                            return;
+
+                        arrow.Owner = player;
+                        arrow.Data = skillData;
+                        arrow.PosInfo.State = CreatureState.Moving;
+                        arrow.PosInfo.MoveDir = player.PosInfo.MoveDir;
+                        arrow.PosInfo.PosX = player.PosInfo.PosX;
+                        arrow.PosInfo.PosY = player.PosInfo.PosY;
+                        arrow.Speed = skillData.projectile.speed;
+                        Push(EnterGame, arrow);
+                        break;
+                    }
             }
         }
 

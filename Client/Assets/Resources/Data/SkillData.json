@@ -19,6 +19,19 @@
                 "range": "10",
                 "prefab": "Creature/Arrow"
             }
+        },
+        {
+            "id": "3",
+            "name": "폭발 화살 공격",
+            "cooldown": "1",
+            "damage": "10",
+            "skillType": "SkillExplosion",
+            "projectile": {
+                "name": "화살",
+                "speed": "20.0",
+                "range": "10",
+                "prefab": "Creature/ExplosionArrow"
+            }
         }
     ]
-} 
+}
