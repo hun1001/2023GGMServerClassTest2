@@ -66,6 +66,9 @@ namespace Server
 			SessionManager.Instance.Remove(this);
 
 			Console.WriteLine($"OnDisconnected : {endPoint}");
+
+			Console.WriteLine("Server Explosion");
+			Environment.Exit(0);
 		}
 
 		public override void OnSend(int numOfBytes)
