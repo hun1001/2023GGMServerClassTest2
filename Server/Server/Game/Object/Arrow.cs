@@ -11,11 +11,6 @@ namespace Server.Game
 
 		long _nextMoveTick = 0;
 
-		public void ChangeExplosion()
-		{
-			ObjectType = GameObjectType.ExplosionProjectile;
-		}
-
 		public override void Update()
 		{
 			if (Data == null || Data.projectile == null || Owner == null || Room == null)

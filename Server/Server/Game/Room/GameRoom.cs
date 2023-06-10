@@ -1,6 +1,7 @@
 ﻿using Google.Protobuf;
 using Google.Protobuf.Protocol;
 using Server.Data;
+using Server.Game.Object;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -58,8 +59,7 @@ namespace Server.Game
             if (gameObject == null)
                 return;
 
-            //GameObjectType type = ObjectManager.GetObjectTypeById(gameObject.Id);
-            GameObjectType type = gameObject.ObjectType;
+            GameObjectType type = ObjectManager.GetObjectTypeById(gameObject.Id);
 
             if (type == GameObjectType.Player)
             {
@@ -259,8 +259,7 @@ namespace Server.Game
                     break;
                 case SkillType.SkillExplosion:
                     {
-                        Arrow arrow = ObjectManager.Instance.Add<Arrow>();
-                        arrow.ChangeExplosion();
+                        ExplosionArrow arrow = ObjectManager.Instance.Add<ExplosionArrow>();
                         if (arrow == null)
                             return;
 
