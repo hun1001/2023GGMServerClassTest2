@@ -103,6 +103,12 @@ class PacketHandler
             cc.OnDead();
         }
     }
+
+    public static void S_ChatHandler(PacketSession session, IMessage packet)
+    {
+        S_Chat chatPacket = packet as S_Chat;
+        Debug.Log(chatPacket.Chat);
+    }
 }
 
 

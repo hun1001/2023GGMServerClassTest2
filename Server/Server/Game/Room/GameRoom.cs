@@ -276,6 +276,15 @@ namespace Server.Game
             }
         }
 
+        public void HandleChat(Player player, C_Chat chatPacket)
+        {
+            if (player == null)
+                return;
+            S_Chat chat = new S_Chat();
+            chat.Chat = chatPacket.Chat;
+            Broadcast(chat);
+        }
+
         // TODO
         public Player FindPlayer(Func<GameObject, bool> condition)
         {

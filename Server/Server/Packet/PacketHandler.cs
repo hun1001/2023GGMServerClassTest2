@@ -42,4 +42,17 @@ class PacketHandler
 
 		room.Push(room.HandleSkill, player, skillPacket);
 	}
+
+	public static void C_ChatHandler(PacketSession session, IMessage packet)
+	{
+        C_Chat chatPacket = packet as C_Chat;
+        ClientSession clientSession = session as ClientSession;
+        Player player = clientSession.MyPlayer;
+        if (player == null)
+            return;
+        GameRoom room = player.Room;
+        if (room == null)
+            return;
+        room.Push(room.HandleChat, player, chatPacket);
+    }
 }

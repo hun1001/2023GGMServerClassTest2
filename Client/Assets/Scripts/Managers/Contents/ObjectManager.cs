@@ -18,7 +18,7 @@ public class ObjectManager
     public void Add(ObjectInfo info, bool myPlayer = false)
     {
         GameObjectType objectType = GetObjectTypeById(info.ObjectId);
-        Debug.Log($"Add Object : {objectType}");
+
         if (objectType == GameObjectType.Player)
         {
             if (myPlayer)
