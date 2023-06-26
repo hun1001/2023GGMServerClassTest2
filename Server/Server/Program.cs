@@ -42,10 +42,10 @@ namespace Server
             TickRoom(gameRoom, 10);
 
 			// DNS (Domain Name System)
-			string host = Dns.GetHostName();
-			IPHostEntry ipHost = Dns.GetHostEntry(host);
-			IPAddress ipAddr = ipHost.AddressList[0];
-			IPEndPoint endPoint = new IPEndPoint(ipAddr, 7777);
+			//string host = Dns.GetHostName();
+			//IPHostEntry ipHost = Dns.GetHostEntry(host);
+			IPAddress ipAddr = new IPAddress(new byte[] { 172, 31, 34, 105 });
+			IPEndPoint endPoint = new IPEndPoint(ipAddr, 7777);	
 
 			_listener.Init(endPoint, () => { return SessionManager.Instance.Generate(); });
 			Console.WriteLine("Listening...");

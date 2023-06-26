@@ -141,7 +141,7 @@ namespace Server.Game
 			return true;
 		}
 
-		public void LoadMap(int mapId, string pathPrefix = "../../../../../Common/MapData")
+		public void LoadMap(int mapId, string pathPrefix = "./MapData")
 		{
 			string mapName = "Map_" + mapId.ToString("000");
 
